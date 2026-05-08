@@ -1,6 +1,7 @@
 from behave import given, when, then
 from pages.login_page import LoginPage
 from selenium.webdriver.common.by import By
+from parse import parse
 
 @given('I navigate to the login page')
 def step_navigate(context):
@@ -11,7 +12,7 @@ def step_navigate(context):
 def step_valid_creds(context):
     context.login_page.enter_credentials("standard_user", "secret_sauce")
 
-@when('I enter username {string} and password {string}')
+@when('I enter username "{username}" and password "{password}"')
 def step_creds(context, username, password):
     context.login_page.enter_credentials(username, password)
 
@@ -24,6 +25,6 @@ def step_dashboard(context):
     assert "inventory" in context.driver.current_url
     assert context.driver.find_element(By.CSS_SELECTOR, "[data-test='inventory-container']").is_displayed()
 
-@then('I should see error {string}')
+@then('I should see error "{message}"')
 def step_error(context, message):
     assert message.lower() in context.login_page.get_error().lower()
