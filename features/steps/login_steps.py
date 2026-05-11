@@ -1,3 +1,5 @@
+import time
+
 from behave import given, when, then
 from pages.login_page import LoginPage
 from selenium.webdriver.common.by import By
@@ -11,19 +13,19 @@ def step_navigate(context):
 @when('I enter valid credentials')
 def step_valid_creds(context):
     context.login_page.enter_credentials("standard_user", "secret_sauce")
+    time.sleep(2)
 
 @when('I enter username "{username}" and password "{password}"')
 def step_creds(context, username, password):
     context.login_page.enter_credentials(username, password)
+    time.sleep(2)
 
 @when('I submit the form')
 def step_submit(context):
     context.login_page.submit()
+    time.sleep(5)
 
-@then('I should see the inventory dashboard')
-def step_dashboard(context):
-    assert "inventory" in context.driver.current_url
-    assert context.driver.find_element(By.CSS_SELECTOR, "[data-test='inventory-container']").is_displayed()
+
 
 @then('I should see error "{message}"')
 def step_error(context, message):

@@ -5,5 +5,5 @@ Feature: Inventory Management
     Given I navigate to the login page
     When I enter valid credentials
     And I submit the form
-    And I should see the inventory dashboard
+    Then I should see the inventory dashboard
     Then I click add to cart for the first item
