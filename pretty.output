@@ -1,17 +1,10 @@
-Feature: User Authentication # features/login.feature:1
-  As a registered user
-  I want to log in to access the dashboard
-  @smoke
-  Scenario: Successful login                  # features/login.feature:6
-    Given I navigate to the login page        # features/steps/login_steps.py:6
-    When I enter valid credentials            # features/steps/login_steps.py:11
-    And I submit the form                     # features/steps/login_steps.py:19
-    Then I should see the inventory dashboard # features/steps/login_steps.py:23
+Feature: Inventory Management # features/inventory.feature:1
 
-  @negative
-  Scenario Outline: Failed login -- @1.1                                          # features/login.feature:22
-    Given I navigate to the login page                                            # features/steps/login_steps.py:6
-    When I enter username "locked_out_user" and password "secret_sauce"           # features/steps/login_steps.py:15
-    And I submit the form                                                         # features/steps/login_steps.py:19
-    Then I should see error "Epic sadface: Sorry, this user has been locked out." # features/steps/login_steps.py:28
+  @smoke
+  Scenario: Add to chart 1 item                 # features/inventory.feature:4
+    Given I navigate to the login page          # features/steps/login_steps.py:8
+    When I enter valid credentials              # features/steps/login_steps.py:13
+    And I submit the form                       # features/steps/login_steps.py:23
+    Then I should see the inventory dashboard   # features/steps/inventory_steps.py:17
+    Then I click add to cart for the first item # features/steps/inventory_steps.py:25
 

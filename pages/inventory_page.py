@@ -5,8 +5,8 @@ from pages.base_page import BasePage
 
 
 class inventoryPage(BasePage):
-    click_add_to_cart_first_item = (By.CSS_SELECTOR, "[data-test='add-to-cart-sauce-labs-backpack']")
+    addToCartBTN = (By.CSS_SELECTOR, "[data-test='add-to-cart-sauce-labs-backpack']")
 
 
-    def click_add_to_cart_first_item(self):
-        self.click(self.click_add_to_cart_first_item)
+    def click_add_to_cart(self):
+        self.click(self.addToCartBTN)
