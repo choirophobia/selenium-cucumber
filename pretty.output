@@ -2,9 +2,18 @@ Feature: Inventory Management # features/inventory.feature:1
 
   @smoke
   Scenario: Add to chart 1 item                 # features/inventory.feature:4
-    Given I navigate to the login page          # features/steps/login_steps.py:8
-    When I enter valid credentials              # features/steps/login_steps.py:13
-    And I submit the form                       # features/steps/login_steps.py:23
-    Then I should see the inventory dashboard   # features/steps/inventory_steps.py:17
-    Then I click add to cart for the first item # features/steps/inventory_steps.py:25
+    Given I navigate to the login page          # None
+    When I enter valid credentials              # None
+    And I submit the form                       # None
+    Then I should see the inventory dashboard   # None
+    Then I click add to cart for the first item # None
+
+  @shopping_cart
+  Scenario: Add to chart 1 item                # features/inventory.feature:12
+    Given I navigate to the login page         # features/steps/login_steps.py:8
+    When I enter valid credentials             # features/steps/login_steps.py:13
+    And I submit the form                      # features/steps/login_steps.py:23
+    And I click add to cart for the first item # None
+    And I click shopping cart button           # None
+    Then I should see the item in the cart     # None
 

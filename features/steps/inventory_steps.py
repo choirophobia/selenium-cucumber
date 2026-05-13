@@ -25,4 +25,11 @@ def step_dashboard(context):
 @then('I click add to cart for the first item')
 def step_add_to_cart(context):
     context.inventory_page.click_add_to_cart()
-    time.sleep(5)
+
+@then('I click shopping cart button')
+def step_click_shopping_cart(context):
+    context.inventory_page.click_shopping_cart()
+   
+@then('I should see the item in the cart')
+def step_verify_cart(context):
+    assert context.driver.find_element(By.CSS_SELECTOR, "[data-test='inventory-item']").is_displayed()
