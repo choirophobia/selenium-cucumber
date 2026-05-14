@@ -33,3 +33,16 @@ def step_click_shopping_cart(context):
 @then('I should see the item in the cart')
 def step_verify_cart(context):
     assert context.driver.find_element(By.CSS_SELECTOR, "[data-test='inventory-item']").is_displayed()
+
+@when('I click all add to cart buttons')
+def step_click_all_add_to_cart(context):
+    # """Click every 'Add to Cart' button on the inventory page"""
+    context.inventory_page.click_all_add_to_cart_buttons()
+    time.sleep(2)  # Allow UI to update cart badge
+
+@then('the cart badge should show "{expected_count}"')
+def step_verify_cart_badge(context, expected_count):
+    # """Verify the cart badge displays the expected item count"""
+    actual_count = context.inventory_page.get_cart_badge_text()
+    assert actual_count == expected_count, \
+        f"Expected cart badge '{expected_count}', but got '{actual_count}'"

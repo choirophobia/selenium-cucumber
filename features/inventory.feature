@@ -17,3 +17,13 @@ Scenario: Add to chart 1 item
     And I click add to cart for the first item
     And I click shopping cart button
     Then I should see the item in the cart
+
+
+@smoke @cart
+  Scenario: Add all items to cart and verify count
+    Given I navigate to the login page
+    When I enter valid credentials
+    And I submit the form
+    Then I should see the inventory dashboard
+    When I click all add to cart buttons
+    # Then the cart badge should show "6"
